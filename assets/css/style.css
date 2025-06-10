@@ -4298,7 +4298,7 @@ blockquote:before {
 
     .speakers-timeline-info {
       border-color: #0C5385;
-      box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+      box-shadow: 0 4px 18px 0 rgba(0, 0, 0, .25);
     }
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/localhost\/giner-html\/template\/assets\/scss\/_site\.scss}line{font-family:\000032011}}
     .our-speaker-item .speaker-item-info .name {
@@ -4714,12 +4714,15 @@ blockquote:before {
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/localhost\/giner-html\/template\/assets\/scss\/_site\.scss}line{font-family:\000032372}}
 .speakers-timeline-img,
 .speakers-timeline-info {
+  border: solid ;
   border-radius: 25px;
   background-color: #FFFFFF;
   padding: 20px;
-  padding-left: 10px;
-  width: calc(50% - 55px);
+  padding-left: 20px;
+  padding-right: 20px;
+  width: calc(50% - 40px);
  }
+ /* sekkk bingung */
 
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/localhost\/giner-html\/template\/assets\/scss\/_site\.scss}line{font-family:\000032377}}
 .speakers-timeline-info .date {
@@ -4733,6 +4736,7 @@ blockquote:before {
   margin-bottom: 10px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/localhost\/giner-html\/template\/assets\/scss\/_site\.scss}line{font-family:\000032387}}
 .speakers-timeline-info p {
+
   font-weight: 300;
   color : #000000; }
 
