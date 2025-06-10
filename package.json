@@ -1,0 +1,28 @@
+{
+  "name": "ito",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AFIF-fahmi/ITO.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AFIF-fahmi/ITO/issues"
+  },
+  "homepage": "https://github.com/AFIF-fahmi/ITO#readme",
+  "description": "",
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "gulp": "^5.0.1",
+    "gulp-sass": "^6.0.1"
+  },
+  "dependencies": {
+    "sass": "^1.89.2"
+  }
+}
