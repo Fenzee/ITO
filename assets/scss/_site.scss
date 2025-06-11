@@ -1,7 +1,6 @@
-@use 'variables' as *;
-
 /*----------------------- LOGO -----------------------*/
-.logo:before {
+
+&:before {
     content: '';
     position: absolute;
     top: 50%;
@@ -21,7 +20,8 @@
 }
 
 /*---------------------- TO-TOP ----------------------*/
-.to-top:hover {
+
+&:hover {
     background-color: $link_hover_color;
     box-shadow: $box_shadow;
 }
@@ -97,57 +97,100 @@ i {
 
 /* ------------------ S-CHOOSE-US ------------------- */
 
-.s-choose-us:hover h4 {
-    color: $accent_color;
+h4 {
+    font-weight: 600;
+    position: relative;
+    margin: 21px 0;
+}
+
+p {
+    text-transform: capitalize;
+}
+
+&:hover {
+    h4 {
+        color: $accent_color;
+    }
 }
 
 /*------------------ map-with-route ------------------*/
 
-.map-with-route:last-child {
+img {
+    display: block;
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: $border_radius;
+}
+
+&:last-child {
     margin-right: 0;
 }
 
-.map-with-route i {
+i {
     margin-right: 8px;
     color: $accent_color;
 }
 
 /*-------------------- S-INSTAGRAM --------------------*/
 
-.s-instagram:hover img {
-    transition-duration: 0.3s;
+&:hover {
+    img {
+        transition-duration: 0.3s;
+    }
+
+    ul {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+        font-size: 20px;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        letter-spacing: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    i {
+        color: $accent_color;
+    }
 }
 
-.s-instagram:hover ul {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
+/*---------------------- S-NEWS ----------------------*/
+
+img {
+    display: block;
     width: 100%;
-    justify-content: center;
-    font-size: 20px;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    letter-spacing: 0;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    height: 450px;
+    object-fit: cover;
+    border-radius: $border_radius;
 }
 
-.s-instagram:hover i {
+&:last-child {
+    margin-right: 0;
+}
+
+i {
+    margin-right: 8px;
     color: $accent_color;
 }
 
 /*------------------ CONFERENCE-MAP ------------------*/
 
-.conference-map:hover:before {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-}
+&:hover {
+    &:before {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
 
-.conference-map:hover img {
-    transition-duration: 0.3s;
+    img {
+        transition-duration: 0.3s;
+    }
 }
 
 /*-------------------- S-PARTNERS --------------------*/
@@ -179,7 +222,7 @@ img {
 }
 
 @media (max-width: 767px) {
-    .container > div {
+    >div {
         min-width: 75px;
         font-size: 34px;
     }
@@ -190,7 +233,7 @@ img {
 }
 
 @media (max-width: 575px) {
-    .logo:before {
+    &:before {
         display: none;
     }
 }
