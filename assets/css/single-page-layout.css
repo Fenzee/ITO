@@ -1,0 +1,257 @@
+/* Single Page Layout Styles */
+
+/* Body modifications for single page */
+body.single-page-view {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Top bar for single page */
+.top-bar-single-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 85px;
+    background: rgba(13, 90, 165, 0.98);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 4px 30px rgba(13, 90, 165, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.top-bar-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-single {
+    display: flex;
+    align-items: center;
+}
+
+.logo-single img {
+    transition: transform 0.3s ease;
+    filter: brightness(0) invert(1);
+}
+
+.logo-single:hover img {
+    transform: scale(1.05);
+}
+
+.social-list-single {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.social-list-single li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.social-list-single li a:hover {
+    background: rgba(255, 255, 255, 0.95);
+    color: #0d5aa5;
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 1);
+}
+
+.btn-register-single {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 35px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: #0d5aa5;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4),
+                0 0 0 2px rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-register-single::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-register-single:hover::before {
+    left: 100%;
+}
+
+.btn-register-single:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 35px rgba(255, 215, 0, 0.6),
+                0 0 0 3px rgba(255, 255, 255, 0.4);
+}
+
+.btn-register-single i {
+    font-size: 16px;
+}
+
+/* Main content area adjustments */
+.s-marathon-slider,
+.s-hero-simple {
+    margin-top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+/* Footer removed for single page layout */
+footer {
+    display: none !important;
+}
+
+/* Disable scroll on single page */
+.single-page-view .s-our-mission,
+.single-page-view .s-speakers-schedule,
+.single-page-view .s-clients,
+.single-page-view .s-instagram {
+    display: none !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 992px) {
+    .top-bar-single-page {
+        padding: 0 20px;
+        height: 70px;
+    }
+    
+    .btn-register-single span {
+        display: none;
+    }
+    
+    .btn-register-single {
+        padding: 12px;
+        width: 45px;
+        height: 45px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-bar-single-page {
+        padding: 0 15px;
+        height: 60px;
+    }
+    
+    .logo-single img {
+        height: 40px;
+    }
+    
+    .social-list-single {
+        gap: 10px;
+    }
+    
+    .social-list-single li a {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+    
+    .s-marathon-slider,
+    .s-hero-simple {
+        padding-top: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-list-single {
+        display: none; /* Hide social links on very small screens */
+    }
+    
+    .top-bar-content {
+        justify-content: space-between;
+    }
+}
+
+/* Smooth transitions for all interactive elements */
+.top-bar-single-page * {
+    transition: all 0.3s ease;
+}
+
+/* Loading state for single page */
+.single-page-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0d5aa5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.single-page-loading.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-content {
+    text-align: center;
+    color: #ffffff;
+}
+
+.loading-content .spinner {
+    margin: 0 auto 20px;
+}
+
+.loading-content h3 {
+    font-size: 24px;
+    margin: 0;
+    font-family: 'Kanit', sans-serif;
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Hero section adjustments for single page */
+.single-page-view .s-hero-simple {
+    height: 100vh;
+}

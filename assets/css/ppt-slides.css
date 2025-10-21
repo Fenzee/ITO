@@ -1,0 +1,429 @@
+/* PowerPoint-Style Slides System */
+
+/* Slides Container */
+.ppt-slides-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Individual Slide */
+.ppt-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #0d5aa5 0%, #1e73be 50%, #43cea2 100%);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Active Slide */
+.ppt-slide.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Slide In from Right */
+.ppt-slide.slide-in-right {
+    transform: translateX(0);
+}
+
+/* Slide Out to Right */
+.ppt-slide.slide-out-right {
+    transform: translateX(100%);
+}
+
+/* Hero Section Transitions */
+.s-hero-simple {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(0);
+}
+
+.s-hero-simple.slide-out-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.s-hero-simple.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* Slide Content Wrapper */
+.ppt-slide-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 140px 150px 100px 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+/* Custom Scrollbar for Slides - More Visible */
+.ppt-slide-content::-webkit-scrollbar {
+    width: 12px;
+}
+
+.ppt-slide-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.ppt-slide-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 215, 0, 0.6);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.ppt-slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 215, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Scroll Indicator */
+.ppt-slide-content::after {
+    content: '⌄ Scroll untuk melihat lebih banyak';
+    position: fixed;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 215, 0, 0.9);
+    color: #0d5aa5;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.ppt-slide.active .ppt-slide-content::after {
+    animation: scrollHint 3s ease-in-out 1s;
+}
+
+@keyframes scrollHint {
+    0%, 100% { opacity: 0; }
+    10%, 90% { opacity: 1; }
+}
+
+/* Slide Header */
+.ppt-slide-header {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: slideInDown 0.6s ease-out 0.2s both;
+    flex-shrink: 0;
+}
+
+.ppt-slide-title {
+    font-size: 56px;
+    font-weight: 700;
+    color: #ffffff;
+    font-family: 'Kanit', sans-serif;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+.ppt-slide-subtitle {
+    font-size: 22px;
+    color: #ffd700;
+    font-weight: 600;
+    font-family: 'Red Hat Display', sans-serif;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Slide Body */
+.ppt-slide-body {
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeInUp 0.6s ease-out 0.4s both;
+    min-height: 0;
+    flex: 1;
+    overflow: visible;
+}
+
+/* Slide Animations */
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Content Styling Inside Slides */
+.ppt-slide .content-section {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 45px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+.ppt-slide .content-section h3 {
+    color: #0d5aa5;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-family: 'Kanit', sans-serif;
+    line-height: 1.4;
+    position: relative;
+    padding-left: 20px;
+    word-wrap: break-word;
+}
+
+.ppt-slide .content-section h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: linear-gradient(180deg, #0d5aa5 0%, #ffd700 100%);
+    border-radius: 3px;
+}
+
+.ppt-slide .content-section p {
+    color: #333333;
+    line-height: 1.8;
+    font-size: 17px;
+    margin-bottom: 15px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.ppt-slide .content-section ul {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.ppt-slide .content-section li {
+    color: #333333;
+    line-height: 1.8;
+    font-size: 17px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Timeline in Slides */
+.ppt-slide .timeline-container {
+    background: transparent;
+    padding: 0;
+}
+
+.ppt-slide .timeline-item {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    border-left: 5px solid #ffd700;
+}
+
+.ppt-slide .timeline-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Sponsor Grid in Slides */
+.ppt-slide .sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.ppt-slide .sponsor-item {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.ppt-slide .sponsor-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Gallery Grid in Slides */
+.ppt-slide .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.ppt-slide .gallery-item {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    aspect-ratio: 1;
+}
+
+.ppt-slide .gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .ppt-slide-content {
+        padding: 130px 80px 80px 120px;
+    }
+    
+    .ppt-slide-title {
+        font-size: 48px;
+    }
+    
+    .ppt-slide-subtitle {
+        font-size: 20px;
+    }
+    
+    .ppt-slide .content-section {
+        padding: 35px 40px;
+    }
+}
+
+@media (max-width: 992px) {
+    .ppt-slide-content {
+        padding: 120px 50px 80px 50px;
+    }
+    
+    .ppt-slide-title {
+        font-size: 42px;
+    }
+    
+    .ppt-slide-subtitle {
+        font-size: 18px;
+    }
+    
+    .ppt-slide .content-section {
+        padding: 30px 35px;
+    }
+    
+    .ppt-slide .sponsor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .ppt-slide-content {
+        padding: 100px 25px 140px 25px;
+    }
+    
+    .ppt-slide-header {
+        margin-bottom: 35px;
+    }
+    
+    .ppt-slide-title {
+        font-size: 30px;
+        line-height: 1.3;
+    }
+    
+    .ppt-slide-subtitle {
+        font-size: 16px;
+    }
+    
+    .ppt-slide .content-section {
+        padding: 25px 28px;
+        margin-bottom: 25px;
+    }
+    
+    .ppt-slide .content-section h3 {
+        font-size: 23px;
+        padding-left: 18px;
+    }
+    
+    .ppt-slide .content-section h3::before {
+        width: 4px;
+    }
+    
+    .ppt-slide .content-section p,
+    .ppt-slide .content-section li {
+        font-size: 16px;
+    }
+    
+    .ppt-slide .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+    
+    .ppt-slide-content::after {
+        font-size: 13px;
+        bottom: 130px;
+        padding: 8px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ppt-slide-content {
+        padding: 90px 20px 120px 20px;
+    }
+    
+    .ppt-slide-title {
+        font-size: 26px;
+        line-height: 1.3;
+    }
+    
+    .ppt-slide-subtitle {
+        font-size: 14px;
+    }
+    
+    .ppt-slide .content-section {
+        padding: 20px 25px;
+    }
+    
+    .ppt-slide .content-section h3 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    .ppt-slide .content-section p,
+    .ppt-slide .content-section li {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+    
+    .ppt-slide .sponsor-grid {
+        grid-template-columns: 1fr;
+    }
+}

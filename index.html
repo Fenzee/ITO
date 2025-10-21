@@ -10,15 +10,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" href="assets/img/logo.png">
 	<!-- =================== STYLE =================== -->
-	<link rel="stylesheet" type="text/css" href="assets/css/slick.min.css"/>
 	<link rel="stylesheet" href="assets/css/bootstrap-grid.css">
 	<link href="https://use.fontawesome.com/releases/v5.10.1/css/all.css" rel="stylesheet">
 	<link rel="stylesheet" href="assets/css/nice-select.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 	<link rel="stylesheet" href="assets/css/glightbox.css">
+	<link rel="stylesheet" href="assets/css/floating-dock.css">
+	<link rel="stylesheet" href="assets/css/modal-cards.css">
+	<link rel="stylesheet" href="assets/css/animations.css">
+	<link rel="stylesheet" href="assets/css/single-page-layout.css">
+	<link rel="stylesheet" href="assets/css/hero-simple.css">
+	<link rel="stylesheet" href="assets/css/ppt-slides.css">
+	<link rel="stylesheet" href="assets/css/slide-navigation-buttons.css">
+	<link rel="stylesheet" href="assets/css/cross-browser-fixes.css">
 	
 </head>
-<body id="home">
+<body id="home" class="single-page-view">
 	<!-- =============== PRELOADER =============== -->
 	<div class="page-preloader-cover">
 		<div class="cssload-loader">
@@ -29,8 +36,8 @@
 	</div>
 	<!-- ============== PRELOADER END ============== -->
 	<span class="bg-effect" style="background-image: url(assets/img/main-bg.svg);"></span>
-	<!-- ================= HEADER ================= -->
-	<header class="marathon-header-fixed header-fixed">
+	<!-- ================= HEADER (HIDDEN IN SINGLE PAGE MODE) ================= -->
+	<header class="marathon-header-fixed header-fixed" style="display: none;">
 		<a href="#" class="nav-btn">
 			<span></span>
 			<span></span>
@@ -41,7 +48,7 @@
 				<a href="index.html" class="logo"><img height="56.5" src="assets/img/ito.svg" alt="logo"></a>
 				<ul class="social-list">
 					<li><a target="_blank" href="https://www.instagram.com/ito.smktelkomdu"><i class="fab fa-instagram"></i></a></li>
-					<li><a target="_blank" href="https://www.youtube.com/@smktelkomdarululum4435"><i class="fab fa-youtube"></i></a></li>
+					<li><a target="_blank" href="https://www.youtube.com/@smktelkomdarululum4435"><i class="fab fa-youtube text-white "></i></a></li>
 					<li><a target="_blank" href="https://www.facebook.com/smktelkomdu/"><i class="fab fa-facebook"></i></a></li>
 				</ul>
 			</div>
@@ -64,74 +71,53 @@
 		</div>
 	</header>
 	<!-- =============== HEADER END =============== -->
-
-	<!-- ============= MARATHON-SLIDER ============= -->
-	<section class="s-marathon-slider">
-		<div class="marathon-slider">
-			<div class="marathon-slide marathon-slide-1">
-				<div data-hover-only="true" data-pointer-events="true" data-scalar-y="0" class="scene">
-					<div class="scene-item" data-depth="0.2">
-						<span class="marathon-effect" style="background-image: url(assets/img/effect-slider-marathon.svg);"></span>
-					</div>
-					<div class="scene-item" data-depth="0.2">
-						<img class="marathon-img" height="565" src="assets/img/slider-1.png" alt="img">
-					</div>
-					<div class="scene-item" data-depth="0.5">
-						<div class="slider-location">Information Technology<br>Olympiads <span class="date">11 DES 2024</span></div>
-					</div>
-					<div class="scene-item" data-depth="0.35">
-						<div class="marathon-text-left">It's<br>your</div>
-					</div>
-					<div class="scene-item" data-depth="0.35">
-						<div class="marathon-text-right">Time</div>
-					</div>
-				</div>
-			</div>
-			<div class="marathon-slide marathon-slide-2">
-				<div data-hover-only="true" data-pointer-events="true" data-scalar-y="0" class="scene">
-					<div class="scene-item" data-depth="0.2">
-						<span class="marathon-effect" style="background-image: url(assets/img/effect-slider-marathon.svg);"></span>
-					</div>
-					<div class="scene-item" data-depth="0.2">
-						<img class="marathon-img" height="565" src="assets/img/slider-2.png" alt="img">
-					</div>
-					<div class="scene-item" data-depth="0.5">
-						<div class="slider-location">Information Technology <br>Olympiads <span class="date">11 DES 2024</span></div>
-					</div>
-					<div class="scene-item" data-depth="0.35">
-						<div class="marathon-text-left">Be The</div>
-					</div>
-					<div class="scene-item" data-depth="0.35">
-						<div class="marathon-text-right">Star</div>
-					</div>
-				</div>
-			</div>
-			<!-- <div class="marathon-slide marathon-slide-3">
-				<div data-hover-only="true" data-pointer-events="true" data-scalar-y="0" class="scene">
-					<div class="scene-item" data-depth="0.2">
-						<span class="marathon-effect" style="background-image: url(assets/img/effect-slider-marathon.svg);"></span>
-					</div>
-					<div class="scene-item" data-depth="0.2">
-						<img class="marathon-img" src="assets/img/slider-3.png" alt="img">
-					</div>
-					<div class="scene-item" data-depth="0.5">
-						<div class="slider-location">Information Technology <br>Olympiads <span class="date">11 DES 2024 </span></div>
-					</div>
-					<div class="scene-item" data-depth="0.35">
-						<div class="marathon-text-left">Time<br>to</div>
-					</div>
-					<div class="scene-item" data-depth="0.35">
-						<div class="marathon-text-right">Shine</div>
-					</div>
-				</div>
-			</div> -->
+	
+	<!-- =============== TOP BAR (NEW) =============== -->
+	<div class="top-bar-single-page">
+		<div class="top-bar-content">
+			<a href="index.html" class="logo-single"><img height="50" src="assets/img/ito.svg" alt="logo"></a>
+			<ul class="social-list-single">
+				<li><a target="_blank" href="https://www.instagram.com/ito.smktelkomdu"><i class="fab fa-instagram"></i></a></li>
+				<li><a target="_blank" href="https://www.youtube.com/@smktelkomdarululum4435"><i class="fab fa-youtube"></i></a></li>
+				<li><a target="_blank" href="https://www.facebook.com/smktelkomdu/"><i class="fab fa-facebook"></i></a></li>
+			</ul>
+			<a href="https://docs.google.com/forms/d/1meXcYQlETkQcSXBgX98PhaP7ivsyOYUOYXTB6etk_PA/viewform?edit_requested=true" class="btn-register-single">
+				<i class="fas fa-user-plus"></i> <span>Registrasi</span>
+			</a>
 		</div>
-		<img class="marathon-slider-shape" src="assets/img/slider-home1-shape.svg" alt="shape">
-	</section>
-	<!-- =========== MARATHON-SLIDER END =========== -->
+	</div>
+	<!-- =============== TOP BAR END =============== -->
 
-	<!-- ============== S-OUR-MISSION ============== -->
-	<section id="about" class="s-our-mission">
+	<!-- ============= HERO SECTION (SIMPLIFIED) ============= -->
+	<section class="s-hero-simple">
+		<span class="hero-effect" style="background-image: url(assets/img/effect-slider-marathon.svg);"></span>
+		<div class="hero-content">
+			<div class="hero-text">
+				<h1 class="hero-title animate-slide-in">
+					Information Technology<br>
+					<span style="color: #ffd700;">Olympiads</span>
+				</h1>
+				<p class="hero-date animate-fade-in">
+					<i class="fas fa-calendar-alt"></i> 11 DES 2024
+				</p>
+				<div class="hero-subtitle animate-slide-up">
+					<div><span class="text-left">It's Your</span> <span class="text-right">Time</span></div>
+					<div style="font-size: 18px; color: rgba(255,255,255,0.9); font-family: 'Red Hat Display', sans-serif; margin-top: 20px; font-weight: 400;">
+						Unjuk kemampuanmu di bidang teknologi informasi!
+					</div>
+				</div>
+			</div>
+			<div class="hero-robot-wrapper">
+				<img class="hero-robot hero-robot-1 animate-float" src="assets/img/slider-1.png" alt="ITO Robot 1">
+				<img class="hero-robot hero-robot-2 animate-float" src="assets/img/slider-2.png" alt="ITO Robot 2">
+				<div class="robot-glow"></div>
+			</div>
+		</div>
+	</section>
+	<!-- =========== HERO SECTION END =========== -->
+
+	<!-- ============== S-OUR-MISSION (HIDDEN - NOW IN MODAL) ============== -->
+	<section id="about" class="s-our-mission" style="display: none;">
 		<div class="container">
 			<img class="mission-effect" src="assets/img/our-mission-5.svg" alt="img">
 			<h2 class="title-conference"><span>Tentang ITO</span></h2>
@@ -142,8 +128,8 @@
 	</section>
 	<!-- ============ S-OUR-MISSION END ============ -->
 
-	<!-- ============ TIMELINE ============ -->
-	<section id="schedule" class="s-speakers-schedule">
+	<!-- ============ TIMELINE (HIDDEN - NOW IN MODAL) ============ -->
+	<section id="schedule" class="s-speakers-schedule" style="display: none;">
 		<div class="container">
 			<h2 class="title-conference"><span>Timeline</span></h2>
 			<h1 class="Sec-title"><span>Check Our Timeline!</span></h1>
@@ -194,8 +180,8 @@
 	</section>
 	<!-- ========== TIMELINE END ========== -->
 
-	<!--=================== SPONSORS ===================-->
-	<section id="sponsor" class="s-clients s-partners">
+	<!--=================== SPONSORS (HIDDEN - NOW IN MODAL) ===================-->
+	<section id="sponsor" class="s-clients s-partners" style="display: none;">
 		<div class="container">
 			<h2 class="title-conference"><span>Sponsor</span></h2>
 			<hr class="Garis">
@@ -230,8 +216,8 @@
 	</section>
 	<!--================= SPONSOR END =================-->
 
-	<!--================== GALERI ==================-->
-	<section id="galeri" class="s-instagram">
+	<!--================== GALERI (HIDDEN - NOW IN MODAL) ==================-->
+	<section id="galeri" class="s-instagram" style="display: none;">
 		<h2 class="title-conference"><span>Galeri</span></h2>
 			<hr class="Garis">
 		<div class="instagram-cover">
@@ -271,65 +257,28 @@
 	</section>
 	<!--================ GALERI END ================-->
 
-	<!--==================== FOOTER ====================-->
-	<footer class="">
-		<div class="container">
-			<div class="row">
-				<div class="footer-subscribe col-12 col-sm-6 col-lg-4">
-					<a href="#"><img class="logo" width="180px" src="assets/img/logo.png" alt=""></a>
-				</div>
-				<div class="footer-cont col-12 col-sm-6 col-lg-4">
-					<p>SMK Telekomunikasi Darul Ulum</p>
-					<ul class="footer-contacts">
-						<li class="footer-phone">
-							<i aria-hidden="true" class="fas fa-phone"></i>
-							<a href="tel:+6282335991345">+62 823-3599-1345</a>
-						</li>
-						<li class="footer-email">
-							<a href="mailto:Ito.smktelkomdu.du@gmail.com">Ito.smktelkomdu.du@gmail.com</a>
-						</li>
-					</ul>
-					<div class="footer-copyright"><a target="_blank" href="https://www.instagram.com/ito.smktelkomdu/">SMK Telekomunikasi Darul Ulum</a> &copy; 2024. All Rights Reserved.</div>
-				</div>
-				<div class="footer-item-link col-12 col-sm-6 col-lg-4">
-					<div class="footer-link">
-						<h5>Jump to</h5>
-						<ul class="footer-list">
-							<li><a href="#home">Home</a></li>
-							<li><a href="#about">Tentang ITO</a></li>
-							<li><a href="#schedule">Timeline</a></li>
-							<li><a href="#sponsor">Sponsor</a></li>
-							<li><a href="#galeri">Galeri</a></li>
-						</ul>
-					</div>
-					<div class="footer-link">
-						<h5 >Social</h5>
-						<ul class="footer-list">
-							<li><a target="_blank" href="https://www.facebook.com/smktelkomdu/">Facebook</a></li>
-							<li><a target="_blank" href="https://www.instagram.com/ito.smktelkomdu">Instagram</a></li>
-							<li><a target="_blank" href="https://www.youtube.com/@smktelkomdarululum4435">Youtube</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+	<!--==================== FOOTER (HIDDEN) ====================-->
+	<!-- Footer removed for single page layout -->
 	<!--================== FOOTER END ==================-->
 
-	<!--=================== TO TOP ===================-->
-	<a class="to-top" href="#home">
+	<!--=================== TO TOP (HIDDEN IN SINGLE PAGE MODE) ===================-->
+	<a class="to-top" href="#home" style="display: none;">
 		<i class="fa fa-angle-double-up" aria-hidden="true"></i>
 	</a>
 	<!--================= TO TOP END =================-->
 
 	<!--=================== SCRIPT	===================-->
 	<script src="assets/js/jquery-2.2.4.min.js"></script>
-	<script src="assets/js/slick.min.js"></script>
 	<script src="assets/js/rx-lazy.js"></script>
-	<script src="assets/js/jquery.nice-select.js"></script>
-	<script src="assets/js/parallax.min.js"></script>
 	<script src="assets/js/glightbox.min.js"></script>
 	<script src="assets/js/scripts.js"></script>
+	
+	<!-- New Single Page Scripts -->
+	<script src="assets/js/floating-dock.js"></script>
+	<script src="assets/js/content-manager.js"></script>
+	<script src="assets/js/section-components.js"></script>
+	<script src="assets/js/slide-navigation.js"></script>
+	<script src="assets/js/single-page-init.js"></script>
 
 	<!-- Halo ini pesan tersembunyi dari panitia ITO, salam kenal! -->
 </body>
