@@ -223,6 +223,11 @@
     border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
+/* Calendar icon color to match text */
+.hero-date i.fa-calendar-alt {
+    color: #ffd700;
+}
+
 /* Hero Subtitle */
 .hero-subtitle {
     display: flex;

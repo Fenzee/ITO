@@ -96,6 +96,8 @@ class SlideNavigation {
             
             if (isScrollable) {
                 const content = isScrollable.querySelector('.ppt-slide-content');
+                if (!content) return; // Safety check
+                
                 const isAtTop = content.scrollTop === 0;
                 const isAtBottom = content.scrollTop + content.clientHeight >= content.scrollHeight - 5;
                 

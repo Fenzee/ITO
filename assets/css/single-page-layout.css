@@ -255,3 +255,13 @@ body.modal-open {
 .single-page-view .s-hero-simple {
     height: 100vh;
 }
+
+/* Fix social media icon colors - override style.css */
+.top-bar-single-page .social-list-single li a i {
+    color: #ffffff;  /* White in normal state */
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.top-bar-single-page .social-list-single li a:hover i {
+    color: #b0b0b0;  /* Gray on hover (same as current) */
+}

@@ -6,7 +6,7 @@
 		$('body').addClass('animated-page page-loaded');
 
 		/* ---------------- SLIDER HOME ONE --------------- */
-		if($('.marathon-slider')[0]){
+		if($('.marathon-slider')[0] && typeof $.fn.slick !== 'undefined'){
 			$('.marathon-slider').slick({
 				infinite: true,
 				slidesToShow: 1,
@@ -32,7 +32,7 @@
 		}
 
 		/* --------------- SLIDER HOME TWO -------------- */
-		if($('.conference-slider')[0]){
+		if($('.conference-slider')[0] && typeof $.fn.slick !== 'undefined'){
 			$('.conference-slider').slick({
 				infinite: true,
 				slidesToShow: 1,
@@ -177,7 +177,7 @@
 	});
 
 	/* ------------------ DANCE-SLIDER ----------------- */
-	if($('.dance-slider')[0]){
+	if($('.dance-slider')[0] && typeof $.fn.slick !== 'undefined'){
 		$('.dance-slider').slick({
 			infinite: true,
 			slidesToShow: 1,
@@ -192,7 +192,7 @@
 	}
 
 	/* -------------------- CLIENTS ------------------- */
-	if( $('.clients-cover')[0] ){
+	if( $('.clients-cover')[0] && typeof $.fn.slick !== 'undefined' ){
 		$( '.clients-cover' ).slick({
 			infinite: true,
 			slidesToShow: 5,
@@ -370,7 +370,7 @@
 	}
 
 	/* -------------- MARATHON-NEWS-SLIDER ------------- */
-	if( $('.marathon-news-slider')[0] ){
+	if( $('.marathon-news-slider')[0] && typeof $.fn.slick !== 'undefined' ){
 		$( '.marathon-news-slider' ).slick({
 			slidesToShow: 4,
 			slidesToScroll: 1,
@@ -407,7 +407,7 @@
 	}
 
 	/*--------------- TESTIMONIALS SLIDER  --------------*/
-	if( $('.slider-testimonial')[0] ){
+	if( $('.slider-testimonial')[0] && typeof $.fn.slick !== 'undefined' ){
 		$( '.slider-testimonial' ).slick({
 			slidesToShow: 2,
 			slidesToScroll: 1,
@@ -430,7 +430,7 @@
 	}
 
 	/*--------------- SLIDER-OUR-SPEAKER  --------------*/
-	if( $('.slider-our-speaker')[0] ){
+	if( $('.slider-our-speaker')[0] && typeof $.fn.slick !== 'undefined' ){
 		$( '.slider-our-speaker' ).slick({
 			slidesToShow: 4,
 			slidesToScroll: 1,
@@ -464,7 +464,7 @@
 		});
 	}
 	/*-------------- CONFERENCE-NEWS-SLIDER  -------------*/
-	if( $('.conference-news-slider')[0] ){
+	if( $('.conference-news-slider')[0] && typeof $.fn.slick !== 'undefined' ){
 		$( '.conference-news-slider' ).slick({
 			slidesToShow: 4,
 			slidesToScroll: 1,
@@ -508,7 +508,7 @@
 	}
 
 	/*--------------- DANCE-MEMBERS-SLIDER  --------------*/
-	if( $('.dance-members-slider')[0] ){
+	if( $('.dance-members-slider')[0] && typeof $.fn.slick !== 'undefined' ){
 		$( '.dance-members-slider' ).slick({
 			slidesToShow: 4,
 			slidesToScroll: 1,
