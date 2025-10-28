@@ -12,7 +12,7 @@
     justify-content: center;
     overflow: hidden;
     z-index: 1;
-    background: linear-gradient(135deg, #0d5aa5 0%, #1e73be 50%, #43cea2 100%);
+    background: transparent; /* Transparent agar background animasi terlihat */
     padding-top: 85px;
 }
 
