@@ -95,13 +95,13 @@
 
 /* Scroll Indicator */
 .ppt-slide-content::after {
-    content: '⌄ Scroll untuk melihat lebih banyak';
+    content: 'v Scroll untuk melihat lebih banyak';
     position: fixed;
     bottom: 120px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(255, 215, 0, 0.9);
-    color: #0d5aa5;
+    color: #012326;
     padding: 10px 25px;
     border-radius: 25px;
     font-size: 14px;
@@ -142,7 +142,7 @@
 
 .ppt-slide-subtitle {
     font-size: 22px;
-    color: #ffd700;
+    color: #05F2DB;
     font-weight: 600;
     font-family: 'Red Hat Display', sans-serif;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -183,18 +183,20 @@
 
 /* Content Styling Inside Slides */
 .ppt-slide .content-section {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
     padding: 40px 45px;
     border-radius: 20px;
     margin-bottom: 30px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(5, 242, 219, 0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2), 0 0 0 1px rgba(5, 242, 219, 0.1);
     width: 100%;
     box-sizing: border-box;
     overflow: visible;
 }
 
 .ppt-slide .content-section h3 {
-    color: #0d5aa5;
+    color: #FFFFFF;
     font-size: 28px;
     margin-bottom: 20px;
     font-family: 'Kanit', sans-serif;
@@ -211,12 +213,12 @@
     top: 0;
     bottom: 0;
     width: 5px;
-    background: linear-gradient(180deg, #0d5aa5 0%, #ffd700 100%);
+    background: linear-gradient(180deg, #05F2DB 0%, #F205DB 100%);
     border-radius: 3px;
 }
 
 .ppt-slide .content-section p {
-    color: #333333;
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.8;
     font-size: 17px;
     margin-bottom: 15px;
@@ -231,7 +233,7 @@
 }
 
 .ppt-slide .content-section li {
-    color: #333333;
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.8;
     font-size: 17px;
     word-wrap: break-word;
@@ -250,7 +252,7 @@
     border-radius: 15px;
     margin-bottom: 25px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-    border-left: 5px solid #ffd700;
+    border-left: 5px solid #05F2DB;
 }
 
 .ppt-slide .timeline-item:hover {

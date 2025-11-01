@@ -148,7 +148,7 @@ body,
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     .gallery-item img {
         width: 100%;
-        height: auto;
+        height: 100%;
     }
 }
 

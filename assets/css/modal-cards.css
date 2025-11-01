@@ -125,7 +125,7 @@
 }
 
 .content-section h3 {
-    color: #0d5aa5;
+    color: #ffffff;
     font-size: 24px;
     margin-bottom: 15px;
     font-family: 'Kanit', sans-serif;
@@ -137,7 +137,8 @@
     content: '';
     position: absolute;
     left: 0;
-    top: 50%;
+    top: 40%;
+    margin-top: 20px;
     transform: translateY(-50%);
     width: 4px;
     height: 24px;

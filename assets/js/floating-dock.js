@@ -35,6 +35,12 @@ class FloatingDock {
                 icon: 'fa-images',
                 title: 'Galeri',
                 action: 'modal'
+            },
+            {
+                id: 'registration',
+                icon: 'fa-user-plus',
+                title: 'Registrasi',
+                action: 'slide'
             }
         ];
         

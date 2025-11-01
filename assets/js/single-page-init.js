@@ -8,9 +8,6 @@
     
     // Wait for DOM to be ready
     function initSinglePage() {
-        // Remove default scroll behavior
-        document.body.style.overflow = 'hidden';
-        
         // Initialize smooth scroll prevention
         preventDefaultScrolling();
         
@@ -30,13 +27,6 @@
     }
     
     function preventDefaultScrolling() {
-        // Prevent scroll with mouse wheel
-        window.addEventListener('wheel', function(e) {
-            if (!document.querySelector('.modal-body:hover')) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-        
         // Prevent scroll with touch
         let touchStartY = 0;
         document.addEventListener('touchstart', function(e) {

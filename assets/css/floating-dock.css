@@ -69,7 +69,7 @@
 
 .dock-item:hover {
     transform: translateX(5px) scale(1.15);
-    background: rgba(255, 215, 0, 0.9);
+    background: rgb(5, 242, 219);
     border-color: #ffd700;
     box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5), 
                 0 0 20px rgba(255, 215, 0, 0.3);
@@ -85,8 +85,8 @@
 }
 
 .dock-item.active {
-    background: linear-gradient(135deg, #ffd700, #ffed4e);
-    border-color: #ffd700;
+    background: linear-gradient(180deg, #5FF7E8, #05F2DB, #05a396);
+    border-color: #43cea2;
     box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
 }
 

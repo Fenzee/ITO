@@ -22,10 +22,199 @@
 	<link rel="stylesheet" href="assets/css/hero-simple.css">
 	<link rel="stylesheet" href="assets/css/ppt-slides.css">
 	<link rel="stylesheet" href="assets/css/slide-navigation-buttons.css">
-	<link rel="stylesheet" href="assets/css/cross-browser-fixes.css">
-	<link rel="stylesheet" href="assets/css/global-background.css">
+	    <link rel="stylesheet" href="assets/css/cross-browser-fixes.css">
+	    <link rel="stylesheet" href="assets/css/global-background.css">
+	    <style>
+			:root {
+				--primary-blue: #0d5aa5;
+				--secondary-blue: #1e73be;
+				--accent-green: #43cea2;
+				--accent-gold: #ffd700;
+				--white: #ffffff;
+				--text-light: rgba(255, 255, 255, 0.9);
+			}
 	
-</head>
+			.competition-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+				gap: 40px;
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 20px;
+				perspective: 1000px;
+			}
+			
+			        .competition-card {
+						background: rgba(255, 255, 255, 0.15);
+						backdrop-filter: blur(20px);
+						border-radius: 20px;
+						padding: 40px 30px;
+						text-align: center;
+						border: 2px solid rgba(255, 255, 255, 0.3);
+						transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+						box-shadow: 0 8px 32px rgba(0,0,0,0.2),
+									0 0 0 1px rgba(255, 255, 255, 0.1);
+						position: relative;
+						overflow: hidden;
+						transform-style: preserve-3d;
+			            display: flex;
+			            flex-direction: column;
+					}
+					
+					/* Shine effect on cards */			.competition-card::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+				transition: left 0.5s ease;
+			}
+			
+			.competition-card:hover::before {
+				left: 100%;
+			}
+			
+			.competition-card:hover {
+				transform: translateY(-10px);
+				border-color: rgba(255, 215, 0, 0.8);
+				box-shadow: 0 15px 50px rgba(0,0,0,0.3),
+							0 0 30px rgba(255, 215, 0, 0.3);
+			}
+			
+			.competition-icon {
+				font-size: 60px;
+				color: var(--white);
+				margin-bottom: 20px;
+				text-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
+				animation: iconGlow 2s ease-in-out infinite;
+			}
+			
+			.competition-icon i {
+				display: inline-block;
+				animation: iconFloat 3s ease-in-out infinite;
+				transition: transform 0.1s ease-out;
+			}
+			
+			@keyframes iconGlow {
+				0%, 100% {
+					text-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
+				}
+				50% {
+					text-shadow: 0 4px 25px rgba(255, 255, 255, 0.8), 
+								 0 0 40px rgba(255, 255, 255, 0.6);
+				}
+			}
+			
+			@keyframes iconFloat {
+				0%, 100% { 
+					transform: translateY(0px); 
+				}
+				50% { 
+					transform: translateY(-15px); 
+				}
+			}
+			
+			/* Stagger the floating animation for each card */
+			.competition-card:nth-child(1) .competition-icon i {
+				animation-delay: 0s;
+			}
+			.competition-card:nth-child(2) .competition-icon i {
+				animation-delay: 0.5s;
+			}
+			.competition-card:nth-child(3) .competition-icon i {
+				animation-delay: 1s;
+			}
+			
+			.competition-card h2 {
+				font-size: 28px;
+				color: var(--white);
+				margin-bottom: 15px;
+				font-weight: 700;
+				font-family: 'Kanit', sans-serif;
+				text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+			}
+			
+			        .competition-card p {
+						font-size: 16px;
+						color: var(--text-light);
+						margin-bottom: 30px;
+						line-height: 1.6;
+						font-family: 'Red Hat Display', sans-serif;
+			            flex-grow: 1;
+					}
+					
+					.button-group {
+						display: flex;
+						flex-direction: column;
+						gap: 15px;
+			            margin-top: auto;
+					}
+					
+					.btn-register, .btn-juknis {
+						padding: 15px 30px;				border-radius: 50px;
+				font-size: 16px;
+				font-weight: 600;
+				text-decoration: none;
+				transition: all 0.3s ease;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				gap: 10px;
+				border: none;
+				cursor: pointer;
+			}
+			
+			.btn-register {
+				background: linear-gradient(135deg, var(--accent-gold) 0%, #ffed4e 100%);
+				color: var(--primary-blue);
+				box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4),
+							0 0 0 2px rgba(255, 255, 255, 0.3);
+				position: relative;
+				overflow: hidden;
+				font-weight: 700;
+			}
+			
+			.btn-register::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+				transition: left 0.5s ease;
+			}
+			
+			.btn-register:hover::before {
+				left: 100%;
+			}
+			
+			.btn-register:hover {
+				transform: scale(1.05);
+				box-shadow: 0 10px 35px rgba(255, 215, 0, 0.6),
+							0 0 0 3px rgba(255, 255, 255, 0.4);
+			}
+			
+			.btn-juknis {
+				background: rgba(255,255,255,0.2);
+				color: var(--white);
+				border: 2px solid rgba(255,255,255,0.4);
+				backdrop-filter: blur(10px);
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+				font-weight: 600;
+			}
+			
+			.btn-juknis:hover {
+				background: rgba(255,255,255,0.95);
+				border-color: rgba(255, 215, 0, 0.8);
+				color: var(--primary-blue);
+				transform: scale(1.05);
+				box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+			}
+	    </style>
+	</head>
 <body id="home" class="single-page-view">
 	<!-- =============== PRELOADER =============== -->
 	<div class="page-preloader-cover">
@@ -64,6 +253,7 @@
 							<li><a href="#schedule">Timeline</a></li>
 							<li><a href="#sponsor">Sponsor</a></li>
 							<li><a href="#galeri">Galeri</a></li>
+							<li><a href="#" onclick="window.floatingDock.navigateTo('registration')">Registrasi</a></li>
 						</ul>
 					</nav>
 					<a href="https://docs.google.com/forms/d/1meXcYQlETkQcSXBgX98PhaP7ivsyOYUOYXTB6etk_PA/viewform?edit_requested=true" class="btn btn-white"><span>registrasi</span></a>
@@ -82,7 +272,7 @@
 				<li><a target="_blank" href="https://www.youtube.com/@smktelkomdarululum4435"><i class="fab fa-youtube"></i></a></li>
 				<li><a target="_blank" href="https://www.facebook.com/smktelkomdu/"><i class="fab fa-facebook"></i></a></li>
 			</ul>
-			<a href="registrasi.html" class="btn-register-single">
+			<a href="#" onclick="window.floatingDock.navigateTo('registration')" class="btn-register-single">
 				<i class="fas fa-user-plus"></i> <span>Registrasi</span>
 			</a>
 		</div>
@@ -108,8 +298,8 @@
 				</div>
 			</div>
 			<div class="hero-robot-wrapper">
-				<img class="hero-robot hero-robot-1 animate-float" src="assets/img/slider-1.png" alt="ITO Robot 1">
-				<img class="hero-robot hero-robot-2 animate-float" src="assets/img/slider-2.png" alt="ITO Robot 2">
+				<img class="hero-robot hero-robot-1 animate-float" src="assets/img/laki.png" alt="ITO Robot 1">
+				<img class="hero-robot hero-robot-2 animate-float" src="assets/img/perempuan.png" alt="ITO Robot 2">
 				<div class="robot-glow"></div>
 			</div>
 		</div>
@@ -220,36 +410,36 @@
 	<section id="galeri" class="s-instagram" style="display: none;">
 		<h2 class="title-conference"><span>Galeri</span></h2>
 			<hr class="Garis">
-		<div class="instagram-cover">
-			<a href="assets/img/Galeri/10.JPG" class="instagram-item glightbox preview-link" data-gallery="gallery">
+		<div class="instagram-cover row">
+			<a href="assets/img/Galeri/10.JPG" class="instagram-item glightbox preview-link col-md-6" data-gallery="gallery" >
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/10.JPG" alt="img">
 			</a>
-			<a href="assets/img/Galeri/1.JPG" class="instagram-item glightbox preview-link" data-gallery="gallery">
+			<a href="assets/img/Galeri/1.JPG" class="instagram-item glightbox preview-link col-md-6" data-gallery="gallery">
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/1.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item">
+			<a href="#" class="instagram-item col-md-10">
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/2.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item">
+			<a href="#" class="instagram-item col-md-6">
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/3.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item">
+			<a href="#" class="instagram-item col-md-6">
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/4.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item">
+			<a href="#" class="instagram-item col-md-6">
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/5.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item">
+			<a href="#" class="instagram-item col-md-6">
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/6.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item">
+			<a href="#" class="instagram-item col-md-6">
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/7.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item">
+			<a href="#" class="instagram-item col-md-6">
 				
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/8.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item">
+			<a href="#" class="instagram-item col-md-6">
 				
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/9.JPG" alt="img">
 			</a>
@@ -268,6 +458,8 @@
 	<!--================= TO TOP END =================-->
 
 	<!--=================== SCRIPT	===================-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 	<script src="assets/js/jquery-2.2.4.min.js"></script>
 	<script src="assets/js/slick.min.js"></script>
 	<script src="assets/js/rx-lazy.js"></script>
@@ -281,6 +473,7 @@
 	<script src="assets/js/slide-navigation.js"></script>
 	<script src="assets/js/single-page-init.js"></script>
 	<script src="assets/js/animated-background.js"></script>
+	<script src="assets/js/animations.js"></script>
 
 	<!-- Halo ini pesan tersembunyi dari panitia ITO, salam kenal! -->
 </body>

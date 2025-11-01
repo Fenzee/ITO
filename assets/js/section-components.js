@@ -35,6 +35,9 @@ class SectionComponents {
             case 'about':
                 this.initAboutAnimations();
                 break;
+            case 'registration':
+                this.initRegistrationAnimations();
+                break;
         }
     }
     
@@ -149,6 +152,42 @@ class SectionComponents {
                 }, (index + titles.length) * 150);
             });
         }
+    }
+
+    initRegistrationAnimations() {
+        const cards = document.querySelectorAll('.competition-card');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 25;
+                const rotateY = (centerX - x) / 25;
+                
+                const iconOffsetX = (x - centerX) / 15;
+                const iconOffsetY = (y - centerY) / 15;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                
+                const icon = card.querySelector('.competition-icon i');
+                if (icon) {
+                    icon.style.transform = `translate(${iconOffsetX}px, ${iconOffsetY}px)`;
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+                const icon = card.querySelector('.competition-icon i');
+                if (icon) {
+                    icon.style.transform = 'translate(0, 0)';
+                }
+            });
+        });
     }
     
     // Utility method to add parallax effect to modal content
