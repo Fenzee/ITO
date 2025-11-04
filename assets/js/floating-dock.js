@@ -110,10 +110,6 @@ class FloatingDock {
                 const action = dockItem.dataset.action;
                 
                 this.handleDockClick(itemId, action);
-                
-                if (this.isMobile && this.mobileOpen) {
-                    this.toggleMobileDock();
-                }
             }
             
             // Mobile toggle click
@@ -131,6 +127,14 @@ class FloatingDock {
     
     handleDockClick(itemId, action) {
         this.setActive(itemId);
+
+        if (this.isMobile) {
+            if (itemId === 'home') {
+                if (this.mobileOpen) {
+                    this.toggleMobileDock();
+                }
+            }
+        }
         
         // Dispatch custom event for content manager
         const event = new CustomEvent('dockItemClick', {
@@ -164,11 +168,14 @@ class FloatingDock {
             this.mobileOpen = !this.mobileOpen;
             
             if (this.mobileOpen) {
+                gsap.to(toggle, { duration: 0.3, autoAlpha: 0 });
                 dock.classList.add('mobile-open');
-                toggle.innerHTML = '<i class="fas fa-times"></i>';
+                gsap.fromTo(dock, { y: 100, autoAlpha: 0 }, { duration: 0.3, y: 0, autoAlpha: 1, ease: "power2.out" });
             } else {
-                dock.classList.remove('mobile-open');
-                toggle.innerHTML = '<i class="fas fa-bars"></i>';
+                gsap.to(dock, { duration: 0.3, y: 100, autoAlpha: 0, ease: "power2.in", onComplete: () => {
+                    dock.classList.remove('mobile-open');
+                }});
+                gsap.to(toggle, { duration: 0.3, autoAlpha: 1, ease: "power2.out" });
             }
         }
     }

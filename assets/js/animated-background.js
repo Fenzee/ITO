@@ -132,7 +132,7 @@
                             // Preserve existing transforms
                             if (currentTransform && currentTransform !== 'none') {
                                 const matrix = new DOMMatrixReadOnly(currentTransform);
-                                const baseTranslate = matrix.translateSelf(0, 0);
+                                // const baseTranslate = matrix.translateSelf(0, 0);
                                 shape.style.transform = currentTransform.replace(/translate\([^)]*\)/g, '').trim() + ` translate(${xPos}px, ${yPos}px)`;
                             } else {
                                 shape.style.transform = `translate(${xPos}px, ${yPos}px)`;

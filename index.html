@@ -266,15 +266,20 @@
 	<!-- =============== TOP BAR (NEW) =============== -->
 	<div class="top-bar-single-page">
 		<div class="top-bar-content">
-			<a href="index.html" class="logo-single"><img height="50" src="assets/img/ito.svg" alt="logo"></a>
+			<a href="index.html" class="logo-single"><img height="50" src="assets/img/logo1.svg" alt="logo"></a>
 			<ul class="social-list-single">
 				<li><a target="_blank" href="https://www.instagram.com/ito.smktelkomdu"><i class="fab fa-instagram"></i></a></li>
 				<li><a target="_blank" href="https://www.youtube.com/@smktelkomdarululum4435"><i class="fab fa-youtube"></i></a></li>
 				<li><a target="_blank" href="https://www.facebook.com/smktelkomdu/"><i class="fab fa-facebook"></i></a></li>
 			</ul>
-			<a href="#" onclick="window.floatingDock.navigateTo('registration')" class="btn-register-single">
-				<i class="fas fa-user-plus"></i> <span>Registrasi</span>
-			</a>
+			<div class="top-bar-buttons">
+				<a href="#" id="openInfoModalBtn" class="btn-email-single">
+					<i class="fas fa-envelope"></i>
+				</a>
+				<a href="#" onclick="window.floatingDock.navigateTo('registration')" class="btn-register-single">
+					<i class="fas fa-user-plus"></i> <span>Registrasi</span>
+				</a>
+			</div>
 		</div>
 	</div>
 	<!-- =============== TOP BAR END =============== -->
@@ -282,25 +287,27 @@
 	<!-- ============= HERO SECTION (SIMPLIFIED) ============= -->
 	<section class="s-hero-simple">
 		<div class="hero-content">
-			<div class="hero-text">
+			<div class="hero-title-container">
 				<h1 class="hero-title animate-slide-in">
 					Information Technology<br>
 					<span style="color: #ffd700;">Olympiads</span>
 				</h1>
-				<p class="hero-date animate-fade-in">
-					<i class="fas fa-calendar-alt"></i> 11 DES 2024
-				</p>
-				<div class="hero-subtitle animate-slide-up">
-					<div><span class="text-left">It's Your</span> <span class="text-right">Time</span></div>
-					<div style="font-size: 18px; color: rgba(255,255,255,0.9); font-family: 'Red Hat Display', sans-serif; margin-top: 20px; font-weight: 400;">
-						Unjuk kemampuanmu di bidang teknologi informasi!
-					</div>
-				</div>
 			</div>
 			<div class="hero-robot-wrapper">
 				<img class="hero-robot hero-robot-1 animate-float" src="assets/img/laki.png" alt="ITO Robot 1">
 				<img class="hero-robot hero-robot-2 animate-float" src="assets/img/perempuan.png" alt="ITO Robot 2">
 				<div class="robot-glow"></div>
+			</div>
+			<div class="hero-info-container">
+				<p class="hero-date animate-fade-in">
+					<i class="fas fa-calendar-alt"></i> CLOSING 1 FEB 2026
+				</p>
+				<div class="hero-subtitle animate-slide-up">
+					<div><span class="text-left">It's Your</span> <span class="text-right">Time</span></div>
+					<div style="font-size: 18px; color: rgba(255,255,255,0.9); font-family: 'Red Hat Display', sans-serif; margin-top: 20px; font-weight: 400;">
+						"Generasi Cerdas: Demokrasi dan Sportivitas di era teknologi "
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -328,9 +335,9 @@
 				<div class="speakers-timeline-item">
 					<div></div><!--Pengisi -->
 					<div class="speakers-timeline-info">
-						<div class="date">11 Desember - 18 Januari</div>
+						<div class="date">Sekarang - 1 Februari</div>
 						<h3 class="title">Pendaftaran</h3>
-						<p>Pendaftaran akan dibuka pada tanggal <br>11 Desember 2024 dan ditutup pada <br> tanggal 18 Januari 2025.</p>
+						<p>Pendaftaran akan dibuka pada tanggal <br>1 Februari 2024 dan ditutup pada <br> tanggal 18 Januari 2025.</p>
 					</div>
 				</div>
 				<div class="speakers-timeline-item">
@@ -357,6 +364,7 @@
 						<p>Pengumpulan PPT dibuka setelah <br> pengumuman finalis, dengan batas akhir 1  Februari </p>
 					</div>
 				</div>
+				
 				<div class="speakers-timeline-item">
 					<div></div> <!-- Hanya untuk pengisi flex box-->
 					<div class="speakers-timeline-info">
@@ -378,27 +386,27 @@
 			<div class="clients-cover">
 				<div class="client-slide">
 					<div class="client-slide-cover">
-						<img src="assets/img/client-1.svg" alt="img">
+						<img src="assets/img/client-1.svg" alt="img" loading="lazy">
 					</div>
 				</div>
 				<div class="client-slide">
 					<div class="client-slide-cover">
-						<img src="assets/img/client-2.svg" alt="img">
+						<img src="assets/img/client-2.svg" alt="img" loading="lazy">
 					</div>
 				</div>
 				<div class="client-slide">
 					<div class="client-slide-cover">
-						<img src="assets/img/client-4.svg" alt="img">
+						<img src="assets/img/client-4.svg" alt="img" loading="lazy">
 					</div>
 				</div>
 				<div class="client-slide">
 					<div class="client-slide-cover">
-						<img src="assets/img/client-5.svg" alt="img">
+						<img src="assets/img/client-5.svg" alt="img" loading="lazy">
 					</div>
 				</div>
 				<div class="client-slide">
 					<div class="client-slide-cover">
-						<img src="assets/img/client-6.svg" alt="img">
+						<img src="assets/img/client-6.svg" alt="img" loading="lazy">
 					</div>
 				</div>
 			</div>
@@ -417,29 +425,29 @@
 			<a href="assets/img/Galeri/1.JPG" class="instagram-item glightbox preview-link col-md-6" data-gallery="gallery">
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/1.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item col-md-10">
+			<a class="instagram-item col-md-10 glightbox" href="assets/img/Galeri/2.JPG" data-gallery="gallery">
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/2.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item col-md-6">
+			<a class="instagram-item col-md-6 glightbox" href="assets/img/Galeri/3.JPG" data-gallery="gallery">
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/3.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item col-md-6">
+			<a class="instagram-item col-md-6 glightbox" href="assets/img/Galeri/4.JPG" data-gallery="gallery">
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/4.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item col-md-6">
+			<a class="instagram-item col-md-6 glightbox" href="assets/img/Galeri/5.JPG" data-gallery="gallery">
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/5.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item col-md-6">
+			<a class="instagram-item col-md-6 glightbox" href="assets/img/Galeri/6.JPG" data-gallery="gallery">
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/6.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item col-md-6">
+			<a class="instagram-item col-md-6 glightbox" href="assets/img/Galeri/7.JPG" data-gallery="gallery">
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/7.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item col-md-6">
+			<a class="instagram-item col-md-6 glightbox" href="assets/img/Galeri/8.JPG" data-gallery="gallery">
 				
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/8.JPG" alt="img">
 			</a>
-			<a href="#" class="instagram-item col-md-6">
+			<a class="instagram-item col-md-6 glightbox" href="assets/img/Galeri/9.JPG" data-gallery="gallery">
 				
 				<img class="rx-lazy" src="assets/img/placeholder-all.png" data-src="assets/img/Galeri/9.JPG" alt="img">
 			</a>
@@ -474,7 +482,50 @@
 	<script src="assets/js/single-page-init.js"></script>
 	<script src="assets/js/animated-background.js"></script>
 	<script src="assets/js/animations.js"></script>
+    <script src="assets/js/welcome-modal.js"></script>
 
 	<!-- Halo ini pesan tersembunyi dari panitia ITO, salam kenal! -->
+
+	<!-- New Welcome Modal -->
+	<div id="welcomeModal" class="modal-overlay info-modal-overlay">
+	    <div class="modal-card info-modal-card">
+	        <div class="modal-header">
+	            <h2 class="modal-title">Selamat Datang di Information Technology Olympiad (ITO)!</h2>
+	            <button class="modal-close info-modal-close"><i class="fas fa-times"></i></button>
+	        </div>
+	        <div class="modal-body info-modal-body">
+	            <p>Ini adalah ajang olimpiade tingkat nasional yang diselenggarakan oleh SMK Telekomunikasi Darul Ulum Jombang.</p>
+	            <p>Tunjukkan bakat dan minatmu di bidang IT dan raih kesempatan untuk menjadi juara!</p>
+	            <p>Jangan ragu untuk menjelajahi semua informasi mengenai olimpiade kami.</p>
+	        </div>
+	    </div>
+	</div>
+
+	<!-- Mail Notification Popup -->
+	<div id="mailNotificationPopup" class="mail-notification-popup">
+	    <div class="mail-notification-header">
+	        <h5 class="mail-notification-title">Pesan Baru</h5>
+	        <button class="mail-notification-close"><i class="fas fa-times"></i></button>
+	    </div>
+	    <div class="mail-notification-body">
+	        <h6>Informasi Terbaru!</h6>
+	        <p>Ini adalah tempat untuk informasi terbaru. Klik untuk membaca...</p>
+	    </div>
+	</div>
+
+	<!-- New Info Modal -->
+	<div id="infoModal" class="modal-overlay info-modal-overlay">
+	    <div class="modal-card info-modal-card">
+	        <div class="modal-header">
+	            <h2 class="modal-title">Informasi Terbaru!</h2>
+	            <button class="modal-close info-modal-close"><i class="fas fa-times"></i></button>
+	        </div>
+	        <div class="modal-body info-modal-body">
+	            <!-- Content will go here later -->
+	            <p>Ini adalah tempat untuk informasi terbaru. Konten akan ditambahkan nanti.</p>
+	            <p>Tetap pantau untuk update menarik!</p>
+	        </div>
+	    </div>
+	</div>
 </body>
 </html>

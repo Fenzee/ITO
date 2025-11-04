@@ -131,6 +131,11 @@ h2.title{
 }
 .rx-lazy{
 	transition: .35s ease-out;
+	max-width: 90%;
+	max-height: 90%;
+	object-fit: contain;
+	transform: none; 
+	transition: none;
 }
 /*----------------- BG-EFFECT MARATHON -----------------*/
 .bg-effect{

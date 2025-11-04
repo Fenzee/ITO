@@ -15,6 +15,8 @@ class SlideNavigation {
     ];
     this.currentIndex = 0;
     this.isTransitioning = false;
+    this.touchStartY = 0; // Added for touch handling
+    this.touchEndY = 0;   // Added for touch handling
 
     this.init();
   }
@@ -98,51 +100,7 @@ class SlideNavigation {
       }
     });
 
-    // Mouse wheel navigation (optional, smooth)
-    let wheelTimeout;
-    document.addEventListener(
-      "wheel",
-      (e) => {
-        // Only navigate if not scrolling inside a slide
-        const activeSlide = document.querySelector(".ppt-slide.active");
-        const isScrollable =
-          activeSlide && activeSlide.querySelector(".ppt-slide-content");
-
-        if (isScrollable) {
-          const content = isScrollable.querySelector(".ppt-slide-content");
-          if (!content) return; // Safety check
-
-          const isAtTop = content.scrollTop === 0;
-          const isAtBottom =
-            content.scrollTop + content.clientHeight >=
-            content.scrollHeight - 5;
-
-          // Allow navigation only at scroll boundaries
-          if ((e.deltaY < 0 && isAtTop) || (e.deltaY > 0 && isAtBottom)) {
-            clearTimeout(wheelTimeout);
-            wheelTimeout = setTimeout(() => {
-              if (e.deltaY > 0) {
-                this.navigateDown();
-              } else {
-                this.navigateUp();
-              }
-            }, 150);
-          }
-        } else {
-          // Home section - always allow wheel navigation
-          clearTimeout(wheelTimeout);
-          wheelTimeout = setTimeout(() => {
-            if (e.deltaY > 0) {
-              this.navigateDown();
-            } else {
-              this.navigateUp();
-            }
-          }, 150);
-        }
-      },
-      { passive: true }
-    );
-
+    
     // Listen for dock navigation to sync
     document.addEventListener("dockItemClick", (e) => {
       const sectionId = e.detail.itemId;
@@ -153,6 +111,70 @@ class SlideNavigation {
         this.updateDots();
       }
     });
+  }
+
+  // Added for touch handling
+  handleTouchStart(e) {
+    // Only track touches on the main content area, not inside interactive elements of slides
+    const slideContent = e.target.closest('.ppt-slide-content');
+    const isHome = this.sections[this.currentIndex] === 'home';
+
+    if (isHome || slideContent) {
+        this.touchStartY = e.changedTouches[0].screenY;
+    }
+  }
+
+  // Added for touch handling
+  handleTouchEnd(e) {
+    const slideContent = e.target.closest('.ppt-slide-content');
+    const isHome = this.sections[this.currentIndex] === 'home';
+
+    if (!isHome && !slideContent) {
+        // If touch ends outside of a slide content area (and not on home), do nothing.
+        return;
+    }
+      
+    this.touchEndY = e.changedTouches[0].screenY;
+    this.handleSwipeGesture();
+  }
+
+  // Added for touch handling
+  handleSwipeGesture() {
+    if (this.isTransitioning) return;
+
+    const swipeThreshold = 50; // Minimum pixels for a swipe
+    const deltaY = this.touchStartY - this.touchEndY;
+
+    // Only trigger if a significant swipe occurred
+    if (Math.abs(deltaY) < swipeThreshold) return;
+
+    const activeSlide = document.querySelector(".ppt-slide.active");
+    const content = activeSlide ? activeSlide.querySelector(".ppt-slide-content") : null;
+
+    let allowNavigation = false;
+
+    if (content) {
+        // Logic for slides with content
+        const isAtTop = content.scrollTop === 0;
+        const isAtBottom = Math.abs(content.scrollHeight - content.clientHeight - content.scrollTop) < 1;
+
+        if (deltaY > 0 && (isAtBottom || content.scrollHeight <= content.clientHeight)) { // Swiped Up at bottom or not scrollable
+            allowNavigation = true;
+        } else if (deltaY < 0 && isAtTop) { // Swiped Down at top
+            allowNavigation = true;
+        }
+    } else {
+        // Logic for home section (no scrollable content)
+        allowNavigation = true;
+    }
+
+    if (allowNavigation) {
+        if (deltaY > 0) { // Swiped Up
+            this.navigateDown();
+        } else { // Swiped Down
+            this.navigateUp();
+        }
+    }
   }
 
   navigateUp() {

@@ -22,6 +22,15 @@
         
         // Initialize cursor effects (optional)
         // setupCursorEffects();
+
+        // Add event listener for the info modal button
+        const openInfoModalBtn = document.getElementById('openInfoModalBtn');
+        if (openInfoModalBtn) {
+            openInfoModalBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default link behavior
+                showInfoModal();
+            });
+        }
         
         console.log('✅ Single Page Layout Initialized');
     }
@@ -34,12 +43,10 @@
         }, { passive: true });
         
         document.addEventListener('touchmove', function(e) {
-            const modalBody = document.querySelector('.modal-body');
-            const isModalOpen = document.querySelector('.modal-overlay.active');
-            
-            if (!isModalOpen) {
-                e.preventDefault();
-            } else if (modalBody && !modalBody.contains(e.target)) {
+            const slideContent = e.target.closest('.ppt-slide-content');
+
+            // Prevent scrolling on anything that is not the scrollable content of a slide.
+            if (!slideContent) {
                 e.preventDefault();
             }
         }, { passive: false });
@@ -176,12 +183,102 @@
             }, 500);
         });
     }
-    
+
+    function setupMailSystem() {
+        const openInfoModalBtn = document.getElementById('openInfoModalBtn');
+        const mailNotification = document.getElementById('mailNotificationPopup');
+        const closeNotificationBtn = mailNotification.querySelector('.mail-notification-close');
+        const infoModal = document.getElementById('infoModal');
+        const infoModalCard = infoModal.querySelector('.info-modal-card');
+        const closeInfoModalBtn = infoModal.querySelector('.modal-close');
+        let modalTimeline; // GSAP timeline
+
+        // Function to close the notification with animation
+        function closeNotification() {
+            mailNotification.classList.remove('active');
+        }
+
+        // Event to open the mail notification
+        openInfoModalBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (mailNotification.classList.contains('active')) {
+                closeNotification();
+            } else {
+                if (window.innerWidth > 768) {
+                    mailNotification.style.top = `150px`;
+                    mailNotification.style.right = `30px`;
+                    mailNotification.style.left = 'auto';
+                }
+                mailNotification.classList.add('active');
+            }
+        });
+
+        // Event to close the mail notification via its own close button
+        closeNotificationBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeNotification();
+        });
+
+        // Event to open the full mail reader from the notification
+        mailNotification.addEventListener('click', () => {
+            closeNotification();
+            showFullMail();
+        });
+
+        function showFullMail() {
+            // Prevent opening if animation is running
+            if (modalTimeline && modalTimeline.isActive()) return;
+
+            document.body.classList.add('modal-open');
+            infoModal.classList.add('active'); // Show overlay
+
+            // GSAP Animation for opening
+            modalTimeline = gsap.fromTo(infoModalCard, 
+                { yPercent: -60, autoAlpha: 0 }, // from: start from above and invisible
+                { 
+                    duration: 0.4, 
+                    xPercent: -50, yPercent: -50, 
+                    autoAlpha: 1, 
+                    ease: "power2.out" 
+                }
+            );
+        }
+
+        function closeFullMail() {
+            // Prevent closing if animation is running
+            if (modalTimeline && modalTimeline.isActive()) return;
+
+            // GSAP Animation for closing
+            modalTimeline = gsap.to(infoModalCard, {
+                duration: 0.4,
+                yPercent: -40,
+                autoAlpha: 0,
+                ease: "power2.in",
+                onComplete: () => {
+                    document.body.classList.remove('modal-open');
+                    infoModal.classList.remove('active'); // Hide overlay
+                }
+            });
+        }
+
+        // Events to close the full mail reader
+        closeInfoModalBtn.addEventListener('click', closeFullMail);
+        infoModal.addEventListener('click', (e) => {
+            if (e.target === infoModal) {
+                closeFullMail();
+            }
+        });
+    }
+
     // Initialize when DOM is ready
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initSinglePage);
+        document.addEventListener('DOMContentLoaded', () => {
+            initSinglePage();
+            setupMailSystem();
+        });
     } else {
         initSinglePage();
+        setupMailSystem();
     }
     
     // Add welcome message

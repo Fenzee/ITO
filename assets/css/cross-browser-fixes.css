@@ -156,9 +156,9 @@ body,
 @supports (position: -webkit-sticky) or (position: sticky) {
     .top-bar-single-page {
         position: -webkit-sticky;
-        position: sticky;
     }
-}
+} 
+    
 
 /* Prevent horizontal overflow */
 body.single-page-view,

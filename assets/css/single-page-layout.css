@@ -8,6 +8,8 @@ body.single-page-view {
 
 /* Top bar for single page */
 .top-bar-single-page {
+    position: relative;
+    z-index: 100;
     position: fixed;
     top: 0;
     left: 0;
@@ -264,4 +266,72 @@ body.modal-open {
 
 .top-bar-single-page .social-list-single li a:hover i {
     color: #b0b0b0;  /* Gray on hover (same as current) */
+}
+
+.top-bar-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between buttons */
+}
+
+@media (max-width: 992px) {
+    .top-bar-buttons {
+        gap: 10px;
+    }
+}
+
+.btn-email-single {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center icon */
+    width: 45px; /* Equal width and height for round shape */
+    height: 45px;
+    padding: 0; /* Remove padding */
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50%; /* Make it round */
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 25px rgba(13, 90, 165, 0.4),
+                0 0 0 2px rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-email-single::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-email-single:hover::before {
+    left: 100%;
+}
+
+.btn-email-single:hover {
+    transform: scale(1.1); /* Slightly larger scale for round button */
+    box-shadow: 0 10px 35px rgba(13, 90, 165, 0.6),
+                0 0 0 3px rgba(255, 255, 255, 0.4);
+}
+
+.btn-email-single i {
+    font-size: 16px;
+}
+
+/* Responsive adjustments for the new button */
+@media (max-width: 992px) {
+    .btn-email-single {
+        width: 40px; /* Smaller for mobile */
+        height: 40px;
+    }
+    .btn-email-single i {
+        font-size: 18px; /* Adjust icon size */
+    }
 }

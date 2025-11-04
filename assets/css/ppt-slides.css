@@ -21,8 +21,8 @@
     background: linear-gradient(135deg, #0d5aa5 0%, #1e73be 50%, #43cea2 100%);
     opacity: 0;
     visibility: hidden;
-    transform: translateX(100%);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.5s ease;
     pointer-events: none;
     overflow: hidden;
 }
@@ -34,29 +34,39 @@
     pointer-events: auto;
 }
 
-/* Slide In from Right */
-.ppt-slide.slide-in-right {
-    transform: translateX(0);
+/* Right / Down*/
+.ppt-slide.slide-in-down {
+    transform: translateY(0);
 }
 
-/* Slide Out to Right */
-.ppt-slide.slide-out-right {
-    transform: translateX(100%);
+.ppt-slide.slide-out-down {
+    transform: translateY(100%);
 }
+
+.ppt-slide.slide-in-up {
+    transform: translateY(0);
+}
+
+.ppt-slide.slide-in-up {
+    transform: translateY(0);
+}
+
+.ppt-slide.slide-out-up {
+    transform: translateY(-100%);
+}
+
 
 /* Hero Section Transitions */
-.s-hero-simple {
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateX(0);
-}
 
-.s-hero-simple.slide-out-left {
-    transform: translateX(-100%);
+/* Left / UP */
+.s-hero-simple.slide-out-up { 
+    transform: translateY(-100%);
     opacity: 0;
 }
 
+
+
 .s-hero-simple.active {
-    transform: translateX(0);
     opacity: 1;
 }
 
@@ -184,15 +194,38 @@
 /* Content Styling Inside Slides */
 .ppt-slide .content-section {
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
     padding: 40px 45px;
     border-radius: 20px;
     margin-bottom: 30px;
-    border: 2px solid rgba(5, 242, 219, 0.3);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2), 0 0 0 1px rgba(5, 242, 219, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2),0 0 0 1px rgba(255, 255, 255, 0.1);
     width: 100%;
     box-sizing: border-box;
-    overflow: visible;
+    overflow: hidden;
+    transition: all 0.7s ease;    
+}
+
+.ppt-slide .content-section:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3),0 0 0 1px rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    
+    border: 2px solid rgba(255, 215, 0, 0.9);
+}
+
+.ppt-slide .content-section::before {
+    content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+	transition: left 1.3s ease;
+}
+
+.ppt-slide .content-section:hover::before {
+	left: 100%;
 }
 
 .ppt-slide .content-section h3 {
@@ -220,8 +253,6 @@
 .ppt-slide .content-section p {
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.8;
-    font-size: 17px;
-    margin-bottom: 15px;
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
@@ -247,18 +278,93 @@
 }
 
 .ppt-slide .timeline-item {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 25px;
-    border-radius: 15px;
-    margin-bottom: 25px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(20px);
+    padding: 40px 45px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2),0 0 0 1px rgba(255, 255, 255, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: all 0.7s ease;    
     border-left: 5px solid #05F2DB;
 }
 
 .ppt-slide .timeline-item:hover {
     transform: translateX(10px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3),0 0 0 1px rgba(255, 255, 255, 0.2);
 }
+
+.ppt-slide .timeline-item::before {
+    content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+    border-radius: 0px;
+    border: 0px;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+	transition: left 2.3s ease;
+    box-shadow: none;
+}
+
+.ppt-slide .timeline-item:hover::before {
+	left: 100%;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+
+/* Menjawawa
+
+
+
+.ppt-slide .content-section {
+    background: rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(20px);
+    padding: 40px 45px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2),0 0 0 1px rgba(255, 255, 255, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: all 0.7s ease;    
+}
+
+.ppt-slide .content-section:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3),0 0 0 1px rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    
+    border: 2px solid rgba(255, 215, 0, 0.9);
+}
+
+.ppt-slide .content-section::before {
+    content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+	transition: left 1.3s ease;
+}
+
+.ppt-slide .content-section:hover::before {
+	left: 100%;
+}
+
+
+
+
+
+
+*/
 
 /* Sponsor Grid in Slides */
 .ppt-slide .sponsor-grid {

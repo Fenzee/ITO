@@ -70,7 +70,7 @@
 .dock-item:hover {
     transform: translateX(5px) scale(1.15);
     background: rgb(5, 242, 219);
-    border-color: #ffd700;
+    border-color: #5FF7E8;
     box-shadow: 0 8px 30px rgba(255, 215, 0, 0.5), 
                 0 0 20px rgba(255, 215, 0, 0.3);
 }
@@ -247,7 +247,7 @@
     }
     
     .floating-dock.mobile-view.mobile-open {
-        bottom: 100px;
+        bottom: 25px;
     }
     
     .dock-item {

@@ -136,7 +136,7 @@ p {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/localhost\/giner-html\/template\/assets\/scss\/_typography\.scss}line{font-family:\0000348}}
 h1, h2, h3, h4, h5, h6 {
-  color: #025373;
+  color: #ffffff;
   font-weight: 700;
   font-family: "Red Hat Display", sans-serif;
   line-height: 1.3em; }
@@ -186,7 +186,7 @@ a {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/localhost\/giner-html\/template\/assets\/scss\/_typography\.scss}line{font-family:\0000390}}
 i {
-  color: #7a7a7a;
+  color: #ffffff;
   -webkit-transition: .35s ease;
   transition: .35s ease; }
 
@@ -1361,11 +1361,12 @@ header {
 /*---------------------------------------------------------*/
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/localhost\/giner-html\/template\/assets\/scss\/_forms\.scss}line{font-family:\000031}}
 button, input[type="button"], input[type="submit"] {
-  -webkit-appearance: button;
+  appearance: button;  /* revisi sedikit menghilangkan warn */
   cursor: pointer;
   font-family: "Red Hat Display", sans-serif;
   -webkit-transition: .35s ease;
-  transition: .35s ease; }
+  transition: .35s ease; 
+}
 
 @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/localhost\/giner-html\/template\/assets\/scss\/_forms\.scss}line{font-family:\000037}}
 button[disabled], html input[disabled] {
@@ -1996,6 +1997,7 @@ footer {
     height: 400px;
     -webkit-transform: translate(-50%, -50%) scale(1);
             transform: translate(-50%, -50%) scale(1);
+}
 
 .gprev {
     top: 45% !important;
@@ -2006,3 +2008,16 @@ footer {
     top: 45% !important;
     right: 15px !important;
 }
+
+/* Gallery Item Transitions */
+.s-instagram .instagram-item {
+  -webkit-transition: .35s ease-out;
+  transition: .35s ease-out;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  opacity: 0; }
+
+.s-instagram .instagram-item.lazy-loaded {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  opacity: 1; }

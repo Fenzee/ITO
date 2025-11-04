@@ -23,6 +23,7 @@
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto; /* Define two rows */
     align-items: center;
     padding: 0 120px 0 150px;
     max-width: 1600px;
@@ -43,6 +44,18 @@
     z-index: 1;
 }
 
+.hero-title-container {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+}
+
+.hero-info-container {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+}
+
 /* Robot Wrapper */
 .hero-robot-wrapper {
     position: relative;
@@ -53,6 +66,8 @@
     max-width: 450px;
     width: 100%;
     min-height: 565px;
+    grid-column: 2;
+    grid-row: 1 / span 2;
 }
 
 /* Robot Images - Positioned absolutely for smooth crossfade */
@@ -210,6 +225,7 @@
 
 /* Hero Date */
 .hero-date {
+    margin-left: 30px;
     font-size: 24px;
     font-weight: 700;
     color: #ffd700;
@@ -358,22 +374,28 @@
 @media (max-width: 992px) {
     .hero-content {
         grid-template-columns: 1fr;
+        grid-template-rows: auto; /* Reset to auto rows */
         padding: 0 40px;
         text-align: center;
         gap: 40px;
     }
+
+    .hero-title-container, 
+    .hero-info-container, 
+    .hero-robot-wrapper {
+        grid-column: 1; /* All items in the first column */
+        grid-row: auto; /* Let the layout flow naturally */
+    }
     
-    .hero-text {
+    .hero-title-container, .hero-info-container {
         text-align: center;
-        padding: 20px;
-        order: 2;
+        /* padding:  20px 10px 20px; */
     }
     
     .hero-robot-wrapper {
-        order: 1;
         max-width: 350px;
         min-height: 420px;
-        margin-top: 80px;
+        margin: 0 auto; /* Simplified margin for centering */
     }
     
     .hero-robot {
@@ -411,13 +433,24 @@
         padding: 0 20px;
     }
     
+    .hero-title-container {
+        order: 1; /* Title first */
+    }
+    
     .hero-robot-wrapper {
+        order: 2; /* Robot second */
         max-width: 280px;
         min-height: 340px;
+        margin: 20px auto; /* Center the wrapper and add vertical margin */
+    }
+    
+    .hero-info-container {
+        order: 3; /* Date and subtitle third */
     }
     
     .hero-robot {
         max-width: 280px;
+        /* Centering handled by flexbox on wrapper and transform on robot */
     }
     
     .hero-title {
@@ -443,7 +476,7 @@
 @media (max-width: 480px) {
     .hero-robot-wrapper {
         max-width: 220px;
-        min-height: 270px;
+        min-height: 200px;
     }
     
     .hero-robot {
