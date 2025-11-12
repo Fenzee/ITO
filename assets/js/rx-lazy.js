@@ -39,7 +39,7 @@
 			})
 		}
 
-		function isInViewport( htmlElement, indent = 1000 ) {
+		function isInViewport( htmlElement, indent = 200 ) {
 			var htmlElement =  $( htmlElement );
 
 			return ( window.pageYOffset <= htmlElement.offset().top && htmlElement.offset().top <= window.pageYOffset + window.innerHeight + indent );
@@ -48,6 +48,7 @@
 		function showAnimation(){
 			var item = $( this );
 			item.removeClass(hiddenClass);
+			item.parent().addClass('lazy-loaded');
 		}
 	};
 

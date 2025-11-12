@@ -1,0 +1,249 @@
+/* Cross-Browser Compatibility Fixes */
+
+/* Normalize box-sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Fix for Safari backdrop-filter */
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    .modal-overlay {
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+    }
+    
+    .top-bar-single-page,
+    footer {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    }
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    .modal-overlay {
+        background: rgba(0, 0, 0, 0.9);
+    }
+    
+    .top-bar-single-page,
+    footer {
+        background: rgba(255, 255, 255, 0.98);
+    }
+}
+
+/* Fix for Firefox smooth scrolling in modal */
+.modal-body {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+}
+
+/* Fix for Edge and IE11 flexbox issues */
+.floating-dock,
+.dock-item,
+.top-bar-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+/* Fix for Safari transform issues */
+.modal-card,
+.dock-item,
+.timeline-item {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* Fix for Chrome animation performance */
+.dock-item,
+.modal-card,
+.timeline-item,
+.sponsor-item,
+.gallery-item {
+    will-change: transform, opacity;
+}
+
+/* Reset will-change after animation */
+.dock-item:not(:hover),
+.modal-card:not(.active),
+.timeline-item:not(:hover) {
+    will-change: auto;
+}
+
+/* Fix for mobile Safari 100vh issue */
+@supports (-webkit-touch-callout: none) {
+    .s-marathon-slider,
+    body.single-page-view {
+        height: -webkit-fill-available;
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Fix for Firefox button styling */
+button,
+.btn-register-single,
+.modal-close {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Fix for Safari rounded corners on images */
+.gallery-item img,
+.sponsor-item img {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+}
+
+/* Fix for Edge grid layout */
+.gallery-grid,
+.sponsor-grid {
+    display: -ms-grid;
+    display: grid;
+}
+
+/* Prevent text selection on interactive elements */
+.dock-item,
+.modal-close,
+.btn-register-single {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Fix for iOS button active state */
+.dock-item,
+.btn-register-single,
+.modal-close {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* Fix for Android Chrome address bar hide */
+.single-page-view {
+    position: fixed;
+    width: 100%;
+}
+
+/* Smooth font rendering */
+body,
+.modal-card,
+.dock-tooltip {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix for Firefox scrollbar styling */
+@-moz-document url-prefix() {
+    .modal-body {
+        scrollbar-width: thin;
+        scrollbar-color: #0d5aa5 #f1f1f1;
+    }
+}
+
+/* Fix for IE11 object-fit */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* Fix for Safari position sticky issues */
+@supports (position: -webkit-sticky) or (position: sticky) {
+    .top-bar-single-page {
+        position: -webkit-sticky;
+    }
+} 
+    
+
+/* Prevent horizontal overflow */
+body.single-page-view,
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Fix for Chrome blur performance */
+.modal-overlay.active,
+.top-bar-single-page,
+footer {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+/* Fix for Firefox animation jank */
+@-moz-document url-prefix() {
+    .dock-item,
+    .modal-card {
+        image-rendering: -moz-crisp-edges;
+    }
+}
+
+/* GPU acceleration for animations */
+.slide-up,
+.zoom-in,
+.fade-in,
+.stagger-item {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+/* Prevent layout shift during animations */
+.modal-card,
+.floating-dock {
+    contain: layout style paint;
+}
+
+/* Fix for Safari SVG rendering */
+svg {
+    shape-rendering: geometricPrecision;
+}
+
+/* Fix for Edge animation delay */
+@supports (-ms-ime-align: auto) {
+    .stagger-item {
+        animation-delay: 0.1s;
+    }
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .dock-item,
+    .modal-card {
+        border: 2px solid currentColor;
+    }
+    
+    .dock-tooltip {
+        border: 1px solid currentColor;
+    }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+    /* Uncomment to enable dark mode
+    .modal-card {
+        background: #1a1a1a;
+        color: #ffffff;
+    }
+    
+    .modal-header {
+        background: linear-gradient(135deg, #1e3a5f 0%, #2a5080 100%);
+    }
+    */
+}

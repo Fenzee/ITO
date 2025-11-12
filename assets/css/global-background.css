@@ -1,0 +1,312 @@
+/* ===============================================
+   GLOBAL ANIMATED BACKGROUND STYLES
+   Background dengan geometric shapes floating
+   Sesuai dengan referensi gambar
+   =============================================== */
+
+:root {
+    --primary-blue: #1a237e;
+    --secondary-blue: #283593;
+    --tertiary-blue: #303f9f;
+    --accent-gold: #ffd700;
+    --accent-yellow: #ffed4e;
+    --white: #ffffff;
+    --cyan-blue: #43cea2;
+}
+
+/* Base Background */
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0d1b3d 0%, #1a237e 50%, #283593 100%);
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Parallax Dots Layers - Titik-titik halus seperti bintang */
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.parallax-dots-1 {
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.08) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 150px 150px, 150px 150px;
+    background-position: 0 0, 75px 75px;
+    animation: parallaxMove1 40s linear infinite;
+    opacity: 0.6;
+}
+
+.parallax-dots-2 {
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 200px 200px, 200px 200px;
+    background-position: 100px 100px, 250px 250px;
+    animation: parallaxMove2 60s linear infinite;
+    opacity: 0.4;
+}
+
+@keyframes parallaxMove1 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(150px, 150px);
+    }
+}
+
+@keyframes parallaxMove2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-200px, -200px);
+    }
+}
+
+/* Floating Geometric Shapes Container */
+.floating-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+}
+
+/* Shape Base Styles */
+.shape {
+    position: absolute;
+    animation: floatShape 20s infinite ease-in-out;
+}
+
+/* White Triangle dengan border tebal - Kiri Bawah */
+.shape-triangle-white {
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 70px solid var(--white);
+    opacity: 0.7;
+    bottom: 150px;
+    left: 80px;
+    animation-delay: 0s;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.3));
+}
+
+/* Gold Triangle dengan border tebal - Kanan Bawah */
+.shape-triangle-gold {
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 65px solid var(--accent-gold);
+    opacity: 0.6;
+    bottom: 100px;
+    right: 100px;
+    animation-delay: 3s;
+    filter: drop-shadow(0 0 15px rgba(255,215,0,0.4));
+}
+
+/* Segitiga kecil dengan border biru tipis - Tengah kiri */
+.shape-triangle-blue-small-1 {
+    width: 0;
+    height: 0;
+    border: 12px solid transparent;
+    border-top: 20px solid var(--cyan-blue);
+    border-bottom: none;
+    opacity: 0.5;
+    top: 45%;
+    left: 25%;
+    animation-delay: 1s;
+    transform: rotate(-45deg);
+}
+
+/* Segitiga kecil dengan border biru tipis - Tengah kanan */
+.shape-triangle-blue-small-2 {
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top: 25px solid var(--secondary-blue);
+    border-bottom: none;
+    opacity: 0.4;
+    top: 50%;
+    right: 20%;
+    animation-delay: 5s;
+    transform: rotate(45deg);
+}
+
+/* Persegi panjang kuning kecil miring - Kiri atas */
+.shape-rect-gold-left {
+    width: 40px;
+    height: 80px;
+    background: var(--accent-gold);
+    transform: rotate(25deg);
+    opacity: 0.7;
+    top: 15%;
+    left: 12%;
+    animation-delay: 2s;
+}
+
+/* Persegi panjang kuning kecil miring - Kanan atas */
+.shape-rect-gold-right {
+    width: 35px;
+    height: 70px;
+    background: var(--accent-gold);
+    transform: rotate(-30deg);
+    opacity: 0.7;
+    top: 20%;
+    right: 15%;
+    animation-delay: 4s;
+}
+
+/* Lingkaran/titik putih solid kecil - Tengah kanan atas */
+.shape-circle-white {
+    width: 25px;
+    height: 25px;
+    background: var(--white);
+    border-radius: 50%;
+    opacity: 0.8;
+    top: 30%;
+    right: 40%;
+    animation-delay: 1.5s;
+    box-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+
+/* Titik biru kehijauan solid kecil - Kiri bawah */
+.shape-circle-cyan {
+    width: 30px;
+    height: 30px;
+    background: var(--cyan-blue);
+    border-radius: 50%;
+    opacity: 0.7;
+    bottom: 200px;
+    left: 15%;
+    animation-delay: 2.5s;
+    box-shadow: 0 0 20px rgba(67,206,162,0.5);
+}
+
+/* Floating Animation */
+@keyframes floatShape {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+    25% {
+        transform: translateY(-30px) rotate(5deg) scale(1.05);
+    }
+    50% {
+        transform: translateY(-15px) rotate(-5deg) scale(0.95);
+    }
+    75% {
+        transform: translateY(20px) rotate(3deg) scale(1.02);
+    }
+}
+
+/* Pulse Animation untuk beberapa shapes */
+@keyframes shapePulse {
+    0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.15);
+    }
+}
+
+.shape-circle-white {
+    animation: floatShape 20s infinite ease-in-out, shapePulse 4s infinite ease-in-out;
+}
+
+.shape-circle-cyan {
+    animation: floatShape 20s infinite ease-in-out, shapePulse 5s infinite ease-in-out;
+}
+
+/* Glow Effects */
+.glow-effect {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0) 70%);
+    border-radius: 50%;
+    animation: glowPulse 6s infinite ease-in-out;
+    pointer-events: none;
+}
+
+.glow-1 {
+    top: 20%;
+    right: 10%;
+    animation-delay: 0s;
+}
+
+.glow-2 {
+    bottom: 15%;
+    left: 10%;
+    animation-delay: 3s;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.3);
+    }
+}
+
+/* Ensure body uses this background */
+body.with-animated-bg {
+    position: relative;
+    min-height: 100vh;
+}
+
+body.with-animated-bg::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0d1b3d 0%, #1a237e 50%, #283593 100%);
+    z-index: -2;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .shape {
+        opacity: 0.5;
+        animation-duration: 25s;
+    }
+    
+    .parallax-dots-1,
+    .parallax-dots-2 {
+        opacity: 0.3;
+    }
+}
+
+@media (max-width: 480px) {
+    .shape {
+        opacity: 0.4;
+        animation-duration: 30s;
+    }
+    
+    .glow-effect {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+
